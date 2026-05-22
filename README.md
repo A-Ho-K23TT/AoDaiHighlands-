@@ -303,5 +303,7 @@ Give a ⭐ if you like this project!
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+
+access browse: dummy card stripe to give example card
 ---
 

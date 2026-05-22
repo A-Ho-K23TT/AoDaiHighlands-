@@ -116,6 +116,7 @@ export const translations = {
       paymentTitle1: 'PAYMENT',
       paymentTitle2: 'METHOD',
       cashOnDelivery: 'CASH ON DELIVERY',
+      stripeCheckout: 'STRIPE CHECKOUT',
       placeOrder: 'PLACE ORDER',
     },
     orders: {
@@ -318,6 +319,7 @@ export const translations = {
       paymentTitle1: 'PHƯƠNG THỨC',
       paymentTitle2: 'THANH TOÁN',
       cashOnDelivery: 'THANH TOÁN KHI NHẬN HÀNG',
+      stripeCheckout: 'THANH TOÁN STRIPE',
       placeOrder: 'ĐẶT HÀNG',
     },
     orders: {

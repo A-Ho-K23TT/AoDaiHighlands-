@@ -9,6 +9,7 @@ const orderSchema = new mongoose.Schema({
     status: { type: String, required: true, default:'Order Placed' },
     paymentMethod : { type: String, required: true},
     payment: { type: Boolean, required: true, default: false },
+    shippingFee: { type: Number, required: false, default: 0 },
     date: { type: Number, required: true }  
 })
 

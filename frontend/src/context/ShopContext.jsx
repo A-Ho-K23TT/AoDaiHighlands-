@@ -11,7 +11,8 @@ export const ShopContext = createContext();
 const ShopContextProvider = (props) => {
 
     const currency = 'VND ';
-    const delivery_fee = 10;
+    const delivery_fee = 30000;
+    const vndPerUsd = 25000;
     const backendUrl = import.meta.env.VITE_BACKEND_URL
     const [search, setSearch] = useState('');
     const [showSearch, setShowSearch] = useState(false);
@@ -27,6 +28,8 @@ const ShopContextProvider = (props) => {
 
     const t = (key) => translate(language, key);
     const formatCurrency = (amount) => `${new Intl.NumberFormat('vi-VN').format(Number(amount || 0))} VND`;
+    const convertVndToUsd = (amount) => Number((Number(amount || 0) / vndPerUsd).toFixed(2));
+    const formatUsdCurrency = (amount) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Number(amount || 0));
 
     const addToCart = async (itemId,size) => {
         if(!size) {
@@ -150,7 +153,7 @@ const ShopContextProvider = (props) => {
     const value ={
         products , currency , delivery_fee, search, setSearch, showSearch, setShowSearch,
         cartItems, addToCart, setCartItems, getCartCount,updateQuantity, getCartAmount, navigate, backendUrl, 
-        setToken,token, language, setLanguage, t, formatCurrency
+        setToken,token, language, setLanguage, t, formatCurrency, convertVndToUsd, formatUsdCurrency, vndPerUsd
     }
 
     return (

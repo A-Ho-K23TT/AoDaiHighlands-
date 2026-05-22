@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 const PlaceOrder = () => {
 
   const [method,setMothod] = useState('cod');
+  const [loading, setLoading] = useState(false)
   const {navigate, backendUrl, token, cartItems, setCartItems, getCartAmount, delivery_fee, products, t } = useContext(ShopContext);
 
   const [formData, setFormData] = useState({
@@ -30,6 +31,13 @@ const PlaceOrder = () => {
 
   const onSubmitHandler = async (event) => {
      event.preventDefault()
+      if (!token) {
+      toast.error('Please login first')
+      navigate('/login')
+      return
+      }
+
+      setLoading(true)
      try {
       let orderItems = []
 
@@ -49,13 +57,14 @@ const PlaceOrder = () => {
       let orderData = {
         address: formData,
         items: orderItems,
-        amount: getCartAmount() + delivery_fee
+        amount: getCartAmount() + delivery_fee,
+        shippingFee: delivery_fee,
+        paymentMethod: method === 'stripe' ? 'Stripe' : 'Cash On Delivery'
       }
 
       switch(method) {
-        // Api calls for COD
-       case 'cod':
-       const response = await axios.post(backendUrl + '/api/order/place', orderData, {headers: {token}}) 
+       case 'cod': {
+       const response = await axios.post(backendUrl + '/api/order/place', orderData, {headers: {token}})
        if(response.data.success){
         setCartItems({})
         navigate('/orders')
@@ -63,6 +72,17 @@ const PlaceOrder = () => {
         toast.error(response.data.message)
        }
        break;
+       }
+
+       case 'stripe': {
+        const response = await axios.post(backendUrl + '/api/order/place', orderData, {headers: {token}})
+        if (response.data.success && response.data.session_url) {
+          window.location.replace(response.data.session_url)
+        } else {
+          toast.error(response.data.message || 'Cannot create Stripe session')
+        }
+        break;
+       }
 
         default:
         break;
@@ -70,6 +90,9 @@ const PlaceOrder = () => {
       }
      } catch (error) {
       console.log(error);
+      toast.error(error?.response?.data?.message || error.message)
+     } finally {
+      setLoading(false)
      }
   }
 
@@ -114,10 +137,14 @@ const PlaceOrder = () => {
                <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'cod' ? 'bg-green-400' : '' } `} ></p>
                <p className='text-gray-500 text-sm font-medium mx-4' >{t('checkout.cashOnDelivery')}</p>
               </div>
+                <div onClick={() => setMothod('stripe')}  className='flex items-center gap-3 border p-2 px-3 cursor-pointer' >
+                <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'stripe' ? 'bg-green-400' : '' } `} ></p>
+                <p className='text-gray-500 text-sm font-medium mx-4' >{t('checkout.stripeCheckout')}</p>
+                </div>
            </div>
 
            <div className='w-full text-end mt-8 ' >
-              <button type='submit'  className='bg-black text-white px-16  py-3 ' >{t('checkout.placeOrder')}</button>
+                <button type='submit' disabled={loading} className='bg-black text-white px-16  py-3 disabled:opacity-70' >{loading ? 'Please wait...' : t('checkout.placeOrder')}</button>
            </div>
         </div>
       </div>
