@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![AoDaiHighlands E-commerce](https://img.shields.io/badge/Forever-E--commerce-black?style=for-the-badge&logo=shopify&logoColor=white)
+![AoDaiHighlands E-commerce](https://img.shields.io/badge/AoDaiHighlands-E--commerce-black?style=for-the-badge&logo=shopify&logoColor=white)
 
 A modern **full-stack e-commerce clothing website** built with **React**, **Node.js**, **Express**, **MongoDB**, and **Tailwind CSS**. Complete **online shopping platform** with user authentication, shopping cart, product filtering, and admin dashboard.
 
