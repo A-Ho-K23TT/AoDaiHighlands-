@@ -2,11 +2,11 @@
 
 <div align="center">
 
-![Forever E-commerce](https://img.shields.io/badge/Forever-E--commerce-black?style=for-the-badge&logo=shopify&logoColor=white)
+![AoDaiHighlands E-commerce](https://img.shields.io/badge/Forever-E--commerce-black?style=for-the-badge&logo=shopify&logoColor=white)
 
 A modern **full-stack e-commerce clothing website** built with **React**, **Node.js**, **Express**, **MongoDB**, and **Tailwind CSS**. Complete **online shopping platform** with user authentication, shopping cart, product filtering, and admin dashboard.
 
-[![Live Demo](https://img.shields.io/badge/🔗_Live_Demo-Visit_Site-success?style=for-the-badge)](https://forever-frontend-tau-sooty.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/🔗_Live_Demo-Visit_Site-success?style=for-the-badge)]()
 
 </div>
 
@@ -99,8 +99,8 @@ A modern **full-stack e-commerce clothing website** built with **React**, **Node
 ### 1. Clone the Repository
 
 ```bash
-git clone https:
-cd forever
+git clone link repo nay
+cd AoDaiHighlands
 
 ```
  
@@ -134,6 +134,11 @@ CLOUDINARY_CLOUD_NAME=your_cloudinary_name
 CLOUDINARY_API_KEY=your_cloudinary_api_key
 CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 
+ADMIN_EMAIL=admin@gmail.com
+ADMIN_PASSWORD=admin123
+
+# Stripe (thanh toán)
+STRIPE_SECRET_KEY="cua ban"
 ```
 
 Create .env file in frontend folder:
