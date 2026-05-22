@@ -102,7 +102,9 @@ const Orders = ({ token }) => {
                 {t('orders.items')} : {order.items.length}
               </p>
               <p className="mt-3">{t('orders.method')}: {order.paymentMethod}</p>
-              <p>{t('orders.payment')}: {order.payment ? t('orders.done') : t('orders.pending')}</p>
+              <p>
+                {t('orders.payment')}: {order.payment || order.status === 'Delivered' ? t('orders.done') : t('orders.pending')}
+              </p>
               <p>{t('orders.date')}: {new Date(order.date).toLocaleDateString()}</p>
             </div>
             <p className="text-sm sm:text-[15px]">
