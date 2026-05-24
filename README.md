@@ -120,6 +120,8 @@ cd ../admin
 npm install
 
 ```
+login client: aho@gmail.com
+pass: Abc123456
 
 ### 3. Environment Variables
 Create .env file in backend folder:
