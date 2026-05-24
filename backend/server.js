@@ -17,13 +17,7 @@ connectCloudinary()
 
 // Middleware
 app.use(express.json())
-// app.use(cors())
-app.use(cors({
-    origin: ['https://aodaihighlands-1.onrender.com', 'http://localhost:5173'], // Thêm cả link render frontend và link chạy local của bạn vào đây
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
-}))
+app.use(cors())
 
 
 
