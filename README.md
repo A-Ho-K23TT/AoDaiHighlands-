@@ -1,4 +1,4 @@
-# 🛒 Forever - Full Stack MERN E-commerce Clothing Store
+# 🛒 AoDaiHighlands - Full Stack MERN E-commerce Clothing Store
 
 <div align="center">
 
